@@ -724,7 +724,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
     <option name="x" value="3200" />
-    <option name="width" value="1280" />
+    <option name="width" value="1270" />
     <option name="height" value="1440" />
   </component>
   <component name="ProjectView">
@@ -783,8 +783,9 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="android.sdk.path" value="$USER_HOME$/android/sdk" />
+    <property name="android.sdk.path" value="$PROJECT_DIR$/../../sdk" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542809306554" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.18789808" />
   </component>

@@ -1,11 +1,11 @@
 package ro.sorin.todolist.service
 
-import com.ktor.finance.util.dbQuery
 import org.jetbrains.exposed.sql.*
 import ro.sorin.todolist.model.ChangeType
 import ro.sorin.todolist.model.DbUpdater
 import ro.sorin.todolist.model.TodoItem
 import ro.sorin.todolist.model.TodoItems
+import ro.sorin.todolist.util.dbQuery
 
 class TodoListService : TodoListApi {
 
