@@ -18,24 +18,22 @@ plugins {
     kotlin("jvm") version "1.3.10"
     id("com.github.johnrengelman.shadow") version "4.0.2"
 }
-group = "ro.sorin.todolist"
 
+configure<JavaPluginConvention> { sourceCompatibility = JavaVersion.VERSION_1_8 }
+tasks.withType<KotlinCompile> { kotlinOptions.jvmTarget = "1.8" }
+
+group = "ro.sorin.todolist"
 version = "1.0"
 
-dependencies {
-    compile(kotlin("stdlib-jdk8"))
-    testCompile("junit", "junit", "4.12")
-}
-application {
-    mainClassName = "ro.sorin.todolist.MainKt"
-}
-configure<JavaPluginConvention> {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-}
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-}
+application { mainClassName = "ro.sorin.todolist.MainKt" }
 
+/* jar packaging */
+val shadowJar: ShadowJar by tasks
+shadowJar.apply {
+    baseName = "todolist"
+    classifier = ""
+    version = ""
+}
 
 val ktorVersion = "1.0.0"
 val exposedVersion = "0.11.2"
