@@ -26,7 +26,9 @@ dependencies {
     compile(kotlin("stdlib-jdk8"))
     testCompile("junit", "junit", "4.12")
 }
-
+application {
+    mainClassName = "ro.sorin.todolist.MainKt"
+}
 configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
 }
