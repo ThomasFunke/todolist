@@ -12,7 +12,7 @@ import io.ktor.websocket.webSocket
 import ro.sorin.todolist.model.TodoItem
 
 fun Route.toTodoItem(todoListService: TodoListApi) {
-    route("/todolist") {
+    route("/todo") {
 
         get("/") { call.respond(todoListService.getAllTodoItems()) }
 
@@ -39,7 +39,7 @@ fun Route.toTodoItem(todoListService: TodoListApi) {
         }
     }
 
-    webSocket("/todolist/updates") {
+    webSocket("/todo/updates") {
         try {
             todoListService.addChangeListener(this.hashCode()) {
                 outgoing.send(Frame.Text(mapper.writeValueAsString(it)))
