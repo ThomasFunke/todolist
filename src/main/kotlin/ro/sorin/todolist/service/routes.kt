@@ -10,6 +10,7 @@ import io.ktor.response.respond
 import io.ktor.routing.*
 import io.ktor.websocket.webSocket
 import ro.sorin.todolist.model.TodoItem
+import ro.sorin.todolist.util.mapper
 
 fun Route.toTodoItem(todoListService: TodoListApi) {
     route("/todo") {
@@ -55,6 +56,3 @@ fun Route.toTodoItem(todoListService: TodoListApi) {
     }
 }
 
-val mapper = jacksonObjectMapper().apply {
-    setSerializationInclusion(JsonInclude.Include.NON_NULL)
-}
