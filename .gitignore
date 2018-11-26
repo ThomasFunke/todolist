@@ -1,8 +1,11 @@
+/.gradle
 .idea
 *.iml
+/out
 build
 target
 
 .gradle
 local.properties
 *.lock
+src/test/
