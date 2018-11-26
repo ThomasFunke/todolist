@@ -1,11 +1,10 @@
-/.gradle
 .idea
 *.iml
-/out
+out
 build
 target
-
 .gradle
+.gradletasknamecache
 local.properties
 *.lock
 src/test/
