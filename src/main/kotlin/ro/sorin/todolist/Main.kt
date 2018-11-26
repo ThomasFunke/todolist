@@ -8,12 +8,10 @@ import io.ktor.features.ContentNegotiation
 import io.ktor.features.DefaultHeaders
 import io.ktor.jackson.jackson
 import io.ktor.routing.Routing
-import io.ktor.server.engine.embeddedServer
-import io.ktor.server.netty.Netty
+import io.ktor.server.netty.EngineMain
 import io.ktor.websocket.WebSockets
 import ro.sorin.todolist.service.TodoListService
 import ro.sorin.todolist.service.toTodoItem
-import ro.sorin.todolist.util.Log
 import ro.sorin.todolist.util.initExposedDb
 
 fun Application.module() {
@@ -27,7 +25,4 @@ fun Application.module() {
     initExposedDb()
 }
 
-fun main(args: Array<String>) {
-    Log().debug("Starting server ...")
-    embeddedServer(Netty, 9596, module = Application::module).start(wait = true)
-}
+fun main(args: Array<String>): Unit = EngineMain.main(args)
