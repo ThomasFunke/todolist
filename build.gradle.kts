@@ -27,7 +27,7 @@ version = "1.0"
 
 application { mainClassName = "ro.sorin.todolist.MainKt" }
 
-/* jar packaging */
+/* Jar packaging */
 val shadowJar: ShadowJar by tasks
 shadowJar.apply {
     baseName = "todolist"
