@@ -50,15 +50,15 @@ class TodoListService : TodoListApi {
         return key?.let { getTodoItem(it) }
     }
 
-    override suspend fun updateTodoItem(item: TodoItem): TodoItem? {
-        val id = item.id
+    override suspend fun updateTodoItem(todoItem: TodoItem): TodoItem? {
+        val id = todoItem.id
         return if (id == null) {
-            addTodoItem(item)
+            addTodoItem(todoItem)
         } else {
             dbQuery {
                 TodoItems.update({ TodoItems.id eq id }) {
-                    it[name] = item.name
-                    it[quantity] = item.quantity
+                    it[name] = todoItem.name
+                    it[quantity] = todoItem.quantity
                     it[dateUpdated] = System.currentTimeMillis()
                 }
             }

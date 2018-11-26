@@ -27,9 +27,11 @@ fun Route.toTodoItem(todoListService: TodoListApi) {
             todoListService.updateTodoItem(message)
         }
 
-        post {
+        post("/") {
             val message = call.receive<TodoItem>()
-            todoListService.addTodoItem(message)?.let { messageResult -> call.respond(messageResult) }
+            todoListService.addTodoItem(message)?.let { messageResult ->
+                call.respond(messageResult)
+            }
         }
 
         delete("/{id}") {
@@ -37,18 +39,18 @@ fun Route.toTodoItem(todoListService: TodoListApi) {
             if (removed) call.respond(HttpStatusCode.OK)
             else call.respond(HttpStatusCode.NotFound)
         }
-    }
 
-    webSocket("/todo/updates") {
-        try {
-            todoListService.addChangeListener(this.hashCode()) {
-                outgoing.send(Frame.Text(mapper.writeValueAsString(it)))
+        webSocket("/updates") {
+            try {
+                todoListService.addChangeListener(this.hashCode()) {
+                    outgoing.send(Frame.Text(mapper.writeValueAsString(it)))
+                }
+                while (true) {
+                    incoming.receiveOrNull() ?: break
+                }
+            } finally {
+                todoListService.removeChangeListener(this.hashCode())
             }
-            while (true) {
-                incoming.receiveOrNull() ?: break
-            }
-        } finally {
-            todoListService.removeChangeListener(this.hashCode())
         }
     }
 }
