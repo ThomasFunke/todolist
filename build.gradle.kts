@@ -10,6 +10,7 @@ repositories {
     maven { url = uri("https://dl.bintray.com/kotlin/ktor") }
     maven { url = uri("https://dl.bintray.com/kotlin/exposed") }
     maven { url = uri("https://plugins.gradle.org/m2/") }
+    maven { url = uri("https://dl.bintray.com/pgutkowski/Maven") }
 }
 
 plugins {
@@ -42,6 +43,7 @@ val logbackVersion = "1.2.3"
 val jupiterVersion = "5.2.0"
 val assertJVersion = "3.10.0"
 val restAssuredVersion = "3.1.0"
+val kGraphQLVersion = "0.3.0"
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -51,6 +53,9 @@ dependencies {
     implementation("io.ktor:ktor-jackson:$ktorVersion")
     implementation("io.ktor:ktor-websockets:$ktorVersion")
     implementation("io.ktor:ktor-auth-jwt:$ktorVersion")
+
+    /*Graphql*/
+    implementation("com.github.pgutkowski:kgraphql:${kGraphQLVersion}")
 
     /*DB Layer*/
     implementation("com.h2database:h2:$h2Version")
