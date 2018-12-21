@@ -17,7 +17,11 @@ plugins {
     java
     application
     kotlin("jvm") version "1.3.11"
+<<<<<<< HEAD
     id("com.github.johnrengelman.shadow") version "4.0.3"
+=======
+    id("com.github.johnrengelman.shadow") version "4.0.2"
+>>>>>>> 746ee2653a9b6fdb410e995fdc64f387920a4a99
 }
 
 configure<JavaPluginConvention> { sourceCompatibility = JavaVersion.VERSION_1_8 }
