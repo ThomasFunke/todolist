@@ -16,15 +16,15 @@ repositories {
 plugins {
     java
     application
-    kotlin("jvm") version "1.3.10"
-    id("com.github.johnrengelman.shadow") version "4.0.2"
+    kotlin("jvm") version "1.3.11"
+    id("com.github.johnrengelman.shadow") version "4.0.3"
 }
 
 configure<JavaPluginConvention> { sourceCompatibility = JavaVersion.VERSION_1_8 }
 tasks.withType<KotlinCompile> { kotlinOptions.jvmTarget = "1.8" }
 
 group = "ro.sorin.todolist"
-version = "1.0"
+version = "1.1"
 
 application { mainClassName = "ro.sorin.todolist.MainKt" }
 
@@ -36,7 +36,7 @@ shadowJar.apply {
     version = ""
 }
 
-val ktorVersion = "1.0.0"
+val ktorVersion = "1.0.1"
 val exposedVersion = "0.11.2"
 val h2Version = "1.4.196"
 val logbackVersion = "1.2.3"
