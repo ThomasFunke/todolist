@@ -7,6 +7,7 @@ import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.withContext
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.StdOutSqlLogger
@@ -36,7 +37,7 @@ private val hikari by lazy(LazyThreadSafetyMode.NONE) {
 }
 
 suspend fun <T> dbQuery(block: () -> T): T = coroutineScope {
-    async(Dispatchers.IO) { transaction { block() } }.await()
+    withContext(Dispatchers.IO) { transaction { block() } }
 }
 
 val mapper = jacksonObjectMapper().apply {
