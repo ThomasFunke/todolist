@@ -11,7 +11,7 @@ import ro.sorin.todolist.model.TodoItem
 import ro.sorin.todolist.util.mapper
 
 fun Route.toTodoItem(todoListService: TodoListApi) {
-    route("/todo") {
+    route("/notes") {
 
         get("/") { call.respond(todoListService.getAllTodoItems()) }
 
