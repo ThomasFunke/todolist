@@ -22,7 +22,7 @@ class TodoListService : TodoListApi {
     }
 
     override suspend fun getAllTodoItems(): List<TodoItem> = dbQuery {
-        TodoItems.selectAll().map { toTodoItem(it) }
+        TodoItems.selectAll().asSequence().map { toTodoItem(it) }.toList()
     }
 
     private fun toTodoItem(row: ResultRow): TodoItem = TodoItem(
@@ -33,7 +33,7 @@ class TodoListService : TodoListApi {
     )
 
     override suspend fun getTodoItem(id: Int): TodoItem? = dbQuery {
-        TodoItems.select { TodoItems.id.eq(id) }.mapNotNull {
+        TodoItems.select { TodoItems.id.eq(id) }.asSequence().mapNotNull {
             toTodoItem(it)
         }.singleOrNull()
     }
